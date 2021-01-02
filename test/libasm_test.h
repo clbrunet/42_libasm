@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2020/12/26 15:28:28 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/02 10:11:13 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 # define RESET		"\x1B[0m"
@@ -53,8 +54,9 @@ void	print_result(char ko);
 
 int		parse_av(int ac, char **av, t_args *args);
 
-void	test_strlen(t_args *args);
-void	test_strcpy(t_args *args);
-void	test_strcmp(t_args *args);
+void	test_ft_strlen(t_args *args);
+void	test_ft_strcpy(t_args *args);
+void	test_ft_strcmp(t_args *args);
+void	test_ft_strdup(t_args *args);
 
 #endif

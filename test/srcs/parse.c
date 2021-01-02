@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 09:06:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2020/12/24 14:54:14 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/02 09:10:02 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	parse_long_flag(char *av, t_args *args)
 	else if (!strcmp(av, "bonus"))
 		args->bonus = 1;
 	else if (!strcmp(av, "verbose"))
-		args->verbose = 1;
+		args->verbose++;
 	else if (!strcmp(av, "help"))
 		args->help = 1;
 	else
@@ -60,7 +60,7 @@ static int	parse_flag(char *av, t_args *args)
 		else if (*av == 'b')
 			args->bonus = 1;
 		else if (*av == 'v')
-			args->verbose = 1;
+			args->verbose++;
 		else if (*av == 'h')
 			args->help = 1;
 		else

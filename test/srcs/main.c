@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:06:59 by clbrunet          #+#    #+#             */
-/*   Updated: 2020/12/26 15:29:10 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/02 10:06:00 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ void	print_help(void)
 	printf(BOLD "\t<path>/libasm_test" RESET " [flags] [function]...\n");
 	printf(BOLD RED "\nFLAGS:\n" RESET);
 	printf(BOLD MAGENTA "\t-a," RESET BOLD " --all" RESET
-			"\tTest mandatory and bonus functions\n");
+			"\tTest mandatory and bonus functions.\n");
 	printf(BOLD MAGENTA "\t-b," RESET BOLD " --bonus" RESET
-			"\tTest bonus functions\n");
+			"\tTest bonus functions.\n");
 	printf(BOLD MAGENTA "\t-v," RESET BOLD " --verbose" RESET
-			"\tShow the result of each test\n");
+			"\tShow the result of each test. "
+			"Repeating the option show the test.\n");
 	printf(BOLD MAGENTA "\t-h," RESET BOLD " --help" RESET
-			"\tPrints help information\n");
+			"\tPrint this help message.\n");
 	printf(BOLD RED "\nFUNCTION:\n" RESET);
 	printf("\t[ft_]" BOLD "function_name\n" RESET);
 }
@@ -55,25 +56,25 @@ void	print_args(t_args *args)
 int	tests(t_args *args)
 {
 	if (args->strlen)
-		test_strlen(args);
+		test_ft_strlen(args);
 	if (args->strcpy)
-		test_strcpy(args);
+		test_ft_strcpy(args);
 	if (args->strcmp)
-		test_strcmp(args);
+		test_ft_strcmp(args);
 	/* if (args->write) */
-	/* 	test_write(args); */
+	/* 	test_ft_write(args); */
 	/* if (args->read) */
-	/* 	test_read(args); */
-	/* if (args->strdup) */
-	/* 	test_strdup(args); */
+	/* 	test_ft_read(args); */
+	if (args->strdup)
+		test_ft_strdup(args);
 	if (!args->bonus || args->all)
 	{
-		test_strlen(args);
-		test_strcpy(args);
-		test_strcmp(args);
-		/* test_write(args); */
-		/* test_read(args); */
-		/* test_strdup(args); */
+		test_ft_strlen(args);
+		test_ft_strcpy(args);
+		test_ft_strcmp(args);
+		/* test_ft_write(args); */
+		/* test_ft_read(args); */
+		test_ft_strdup(args);
 	}
 	if (args->bonus || args->all)
 	{
