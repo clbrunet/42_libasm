@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 08:40:24 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/02 10:42:28 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/02 18:01:57 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,50 @@
 
 static int	test_ft_strdup_case(char const *test_name, char const *s, t_args *args)
 {
-	static char	ko = 0;
-	char	*dup;
+	char	ko;
 	char	*ft_dup;
+	char	*dup;
 
-	if (ko == -1)
-		return (0);
 	ko = 0;
 	if (args->verbose > 1)
 		printf("\tft_strdup(\"%s\"):", s);
 	else if (args->verbose)
 		printf("\t%s", test_name);
-	fflush(stdout);
-	dup = strdup(s);
 	ft_dup = ft_strdup(s);
+	dup = strdup(s);
 	if (dup && ft_dup && strcmp(dup, ft_dup) != 0)
 		ko = 1;
 	free(dup);
 	free(ft_dup);
 	if (!dup || !ft_dup)
 	{
-		dprintf(2, RED "\tInsufficient memory.\n" RESET);
 		ko = -1;
+		fflush(stdout);
+		if (args->verbose)
+			dprintf(2, RED "\tInsufficient memory.\n" RESET);
 	}
 	else if (args->verbose)
 		print_result(ko);
 	return (ko);
+}
+
+static void	test_ft_strdup2(char ko, t_args *args)
+{
+	char	ret;
+	char	*long_s;
+
+	long_s = "01234567890123456789012345678901234567890123456789"
+		"01234567890123456789012345678901234567890123456789";
+	ret = test_ft_strdup_case("long_string:\t", long_s, args);
+	if (ko != -1 && ret)
+		ko = ret;
+	if (!args->verbose && ko == -1)
+	{
+		fflush(stdout);
+		dprintf(2, RED "\tInsufficient memory.\n" RESET);
+	}
+	else if (!args->verbose)
+		print_result(ko);
 }
 
 void	test_ft_strdup(t_args *args)
@@ -47,7 +65,6 @@ void	test_ft_strdup(t_args *args)
 	static char	done = 0;
 	char		ko;
 	char		ret;
-	char		*long_s;
 
 	if (done)
 		return ;
@@ -65,12 +82,6 @@ void	test_ft_strdup(t_args *args)
 	ret = test_ft_strdup_case("small_string:\t", "0123456789", args);
 	if (ko != -1 && ret)
 		ko = ret;
-	long_s = "01234567890123456789012345678901234567890123456789"
-		"01234567890123456789012345678901234567890123456789";
-	ret = test_ft_strdup_case("long_string:\t", long_s, args);
-	if (ko != -1 && ret)
-		ko = ret;
-	if (!args->verbose && ko != -1)
-		print_result(ko);
+	test_ft_strdup2(ko, args);
 	done = 1;
 }

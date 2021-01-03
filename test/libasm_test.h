@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/02 10:11:13 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 06:07:46 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <errno.h>
 
 # define RESET		"\x1B[0m"
 # define BLACK		"\x1B[30m"
@@ -58,5 +62,7 @@ void	test_ft_strlen(t_args *args);
 void	test_ft_strcpy(t_args *args);
 void	test_ft_strcmp(t_args *args);
 void	test_ft_strdup(t_args *args);
+void	test_ft_write(t_args *args);
+void	test_ft_read(t_args *args);
 
 #endif

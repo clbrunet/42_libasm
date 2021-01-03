@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:06:59 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/02 10:06:00 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 06:50:52 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,26 @@ void	print_args(t_args *args)
 	printf("strdup: %i\n", args->strdup);
 }
 
-int	tests(t_args *args)
+static int	mandatory_part_tests(t_args *args)
+{
+	test_ft_strlen(args);
+	test_ft_strcpy(args);
+	test_ft_strcmp(args);
+	test_ft_write(args);
+	/* test_ft_read(args); */
+	test_ft_strdup(args);
+	return (0);
+}
+
+static int	bonus_part_tests(t_args *args)
+{
+	(void)args;
+	return (0);
+}
+
+/* TODO:	return */
+
+static int	tests(t_args *args)
 {
 	if (args->strlen)
 		test_ft_strlen(args);
@@ -61,24 +80,22 @@ int	tests(t_args *args)
 		test_ft_strcpy(args);
 	if (args->strcmp)
 		test_ft_strcmp(args);
-	/* if (args->write) */
-	/* 	test_ft_write(args); */
+	if (args->write)
+		test_ft_write(args);
 	/* if (args->read) */
 	/* 	test_ft_read(args); */
 	if (args->strdup)
 		test_ft_strdup(args);
-	if (!args->bonus || args->all)
+	if (args->bonus)
+		bonus_part_tests(args);
+	if (args->all)
 	{
-		test_ft_strlen(args);
-		test_ft_strcpy(args);
-		test_ft_strcmp(args);
-		/* test_ft_write(args); */
-		/* test_ft_read(args); */
-		test_ft_strdup(args);
+		mandatory_part_tests(args);
+		bonus_part_tests(args);
 	}
-	if (args->bonus || args->all)
-	{
-	}
+	if (!args->bonus && !args->strlen && !args->strcpy && !args->strcmp
+			&& !args->write && !args->read && !args->strdup)
+		mandatory_part_tests(args);
 	return (0);
 }
 
