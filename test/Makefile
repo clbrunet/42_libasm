@@ -7,11 +7,12 @@ SRCS		=	srcs/main.c		\
 				srcs/test_ft_strcpy.c	\
 				srcs/test_ft_strcmp.c	\
 				srcs/test_ft_strdup.c	\
-				srcs/test_ft_write.c
+				srcs/test_ft_write.c	\
+				srcs/test_ft_read.c
 OBJS		=	$(SRCS:.c=.o)
 
 CC			= clang
-CFLAGS		= -Wall -Wextra -Werror -I ./
+CFLAGS		= -Wall -Wextra -Werror -I ./ -g3 -fsanitize=address
 
 all			:	$(NAME)
 

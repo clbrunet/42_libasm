@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 09:06:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/02 09:10:02 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 15:26:03 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 
 static void	init_args(t_args *args)
 {
-	args->all = 0;
-	args->bonus = 0;
+	args->all = FALSE;
+	args->bonus = FALSE;
 	args->verbose = 0;
-	args->help = 0;
-	args->strlen = 0;
-	args->strcpy = 0;
-	args->strcmp = 0;
-	args->write = 0;
-	args->read = 0;
-	args->strdup = 0;
+	args->help = FALSE;
+	args->strlen = FALSE;
+	args->strcpy = FALSE;
+	args->strcmp = FALSE;
+	args->write = FALSE;
+	args->read = FALSE;
+	args->strdup = FALSE;
 }
 
 static int	parse_long_flag(char *av, t_args *args)
 {
 	if (!strcmp(av, "all"))
-		args->all = 1;
+		args->all = TRUE;
 	else if (!strcmp(av, "bonus"))
-		args->bonus = 1;
+		args->bonus = TRUE;
 	else if (!strcmp(av, "verbose"))
 		args->verbose++;
 	else if (!strcmp(av, "help"))
-		args->help = 1;
+		args->help = TRUE;
 	else
 	{
 		dprintf(2, BOLD RED "--%s:" RESET RED " unknown flag\n" RESET, av);
-		return (1);
+		return (FAILURE);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static int	parse_flag(char *av, t_args *args)
@@ -49,28 +49,28 @@ static int	parse_flag(char *av, t_args *args)
 	if (!*av)
 	{
 		dprintf(2, BOLD RED "-%c:" RESET RED " unknown flag\n" RESET, *av);
-		return (1);
+		return (FAILURE);
 	}
 	if (*av == '-')
 		return (parse_long_flag(av + 1, args));
 	while (*av)
 	{
 		if (*av == 'a')
-			args->all = 1;
+			args->all = TRUE;
 		else if (*av == 'b')
-			args->bonus = 1;
+			args->bonus = TRUE;
 		else if (*av == 'v')
 			args->verbose++;
 		else if (*av == 'h')
-			args->help = 1;
+			args->help = TRUE;
 		else
 		{
 			dprintf(2, BOLD RED "-%c:" RESET RED " unknown flag\n" RESET, *av);
-			return (1);
+			return (FAILURE);
 		}
 		av++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static int	parse_ft(char *av, t_args *args)
@@ -81,23 +81,23 @@ static int	parse_ft(char *av, t_args *args)
 	if (!strncmp(av, "ft_", 3))
 		av += 3;
 	if (!strcmp(av, "strlen"))
-		args->strlen = 1;
+		args->strlen = TRUE;
 	else if (!strcmp(av, "strcpy"))
-		args->strcpy = 1;
+		args->strcpy = TRUE;
 	else if (!strcmp(av, "strcmp"))
-		args->strcmp = 1;
+		args->strcmp = TRUE;
 	else if (!strcmp(av, "write"))
-		args->write = 1;
+		args->write = TRUE;
 	else if (!strcmp(av, "read"))
-		args->read = 1;
+		args->read = TRUE;
 	else if (!strcmp(av, "strdup"))
-		args->strdup = 1;
+		args->strdup = TRUE;
 	else
 	{
 		dprintf(2, BOLD RED "%s:" RESET RED " unknown function\n" RESET, av_bp);
-		return (1);
+		return (FAILURE);
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 int	parse_av(int ac, char **av, t_args *args)
@@ -111,11 +111,11 @@ int	parse_av(int ac, char **av, t_args *args)
 		if (av[i][0] == '-')
 		{
 			if (parse_flag(av[i] + 1, args))
-				return (1);
+				return (FAILURE);
 		}
 		else if (parse_ft(av[i], args))
-			return (1);
+			return (FAILURE);
 		i++;
 	}
-	return (0);
+	return (SUCCESS);
 }

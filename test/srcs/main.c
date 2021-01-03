@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:06:59 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 06:50:52 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 15:20:49 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,17 @@ static int	mandatory_part_tests(t_args *args)
 	test_ft_strcpy(args);
 	test_ft_strcmp(args);
 	test_ft_write(args);
-	/* test_ft_read(args); */
+	test_ft_read(args);
 	test_ft_strdup(args);
-	return (0);
+	return (SUCCESS);
 }
 
-static int	bonus_part_tests(t_args *args)
+static void	bonus_part_tests(t_args *args)
 {
 	(void)args;
-	return (0);
 }
 
-/* TODO:	return */
-
-static int	tests(t_args *args)
+static void	tests(t_args *args)
 {
 	if (args->strlen)
 		test_ft_strlen(args);
@@ -82,8 +79,8 @@ static int	tests(t_args *args)
 		test_ft_strcmp(args);
 	if (args->write)
 		test_ft_write(args);
-	/* if (args->read) */
-	/* 	test_ft_read(args); */
+	if (args->read)
+		test_ft_read(args);
 	if (args->strdup)
 		test_ft_strdup(args);
 	if (args->bonus)
@@ -96,7 +93,6 @@ static int	tests(t_args *args)
 	if (!args->bonus && !args->strlen && !args->strcpy && !args->strcmp
 			&& !args->write && !args->read && !args->strdup)
 		mandatory_part_tests(args);
-	return (0);
 }
 
 int	main(int ac, char **av)
@@ -106,12 +102,11 @@ int	main(int ac, char **av)
 	if (parse_av(ac, av, &args))
 	{
 		print_help();
-		/* print_args(&args); */
-		return (1);
+		return (FAILURE);
 	}
 	if (args.help)
 		print_help();
 	else
 		tests(&args);
-	return (0);
+	return (SUCCESS);
 }

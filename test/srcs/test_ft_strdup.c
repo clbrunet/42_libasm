@@ -18,7 +18,7 @@ static int	test_ft_strdup_case(char const *test_name, char const *s, t_args *arg
 	char	*ft_dup;
 	char	*dup;
 
-	ko = 0;
+	ko = FALSE;
 	if (args->verbose > 1)
 		printf("\tft_strdup(\"%s\"):", s);
 	else if (args->verbose)
@@ -26,12 +26,12 @@ static int	test_ft_strdup_case(char const *test_name, char const *s, t_args *arg
 	ft_dup = ft_strdup(s);
 	dup = strdup(s);
 	if (dup && ft_dup && strcmp(dup, ft_dup) != 0)
-		ko = 1;
+		ko = TRUE;
 	free(dup);
 	free(ft_dup);
 	if (!dup || !ft_dup)
 	{
-		ko = -1;
+		ko = ERROR;
 		fflush(stdout);
 		if (args->verbose)
 			dprintf(2, RED "\tInsufficient memory.\n" RESET);
@@ -49,9 +49,9 @@ static void	test_ft_strdup2(char ko, t_args *args)
 	long_s = "01234567890123456789012345678901234567890123456789"
 		"01234567890123456789012345678901234567890123456789";
 	ret = test_ft_strdup_case("long_string:\t", long_s, args);
-	if (ko != -1 && ret)
+	if (ko != ERROR && ret)
 		ko = ret;
-	if (!args->verbose && ko == -1)
+	if (!args->verbose && ko == ERROR)
 	{
 		fflush(stdout);
 		dprintf(2, RED "\tInsufficient memory.\n" RESET);
@@ -62,26 +62,23 @@ static void	test_ft_strdup2(char ko, t_args *args)
 
 void	test_ft_strdup(t_args *args)
 {
-	static char	done = 0;
+	static char	done = FALSE;
 	char		ko;
 	char		ret;
 
 	if (done)
 		return ;
-	ko = 0;
 	if (args->verbose)
 		printf(BOLD "ft_strdup:\n" RESET);
 	else
 		printf(BOLD "ft_strdup:" RESET);
-	ret = test_ft_strdup_case("empty_string:\t", "", args);
-	if (ret)
-		ko = ret;
+	ko = test_ft_strdup_case("empty_string:\t", "", args);
 	ret = test_ft_strdup_case("one_char_string:", "0", args);
-	if (ko != -1 && ret)
+	if (ko != ERROR && ret)
 		ko = ret;
 	ret = test_ft_strdup_case("small_string:\t", "0123456789", args);
-	if (ko != -1 && ret)
+	if (ko != ERROR && ret)
 		ko = ret;
 	test_ft_strdup2(ko, args);
-	done = 1;
+	done = TRUE;
 }

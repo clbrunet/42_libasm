@@ -1,53 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_strlen.c                                   :+:      :+:    :+:   */
+/*   test_ft_atoi_base.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 16:10:00 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 16:07:04 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_test.h"
 
-static int	test_ft_strlen_case(char const *test_name, char const *str, t_args *args)
+static int	test_ft_atoi_base_case(char const *test_name, char *str, char *base, t_args *args)
 {
 	char	ko;
 
 	if (args->verbose > 1)
-		printf("\tft_strlen(\"%s\"):", str);
+		printf("\tft_atoi_base(\"%s\"):", str);
 	else if (args->verbose)
 		printf("\t%s", test_name);
 	ko = FALSE;
-	if (strlen(str) != ft_strlen(str))
+	if (strtol(str, NULL, strlen(base)) != ft_atoi_base(str, base))
 		ko = TRUE;
 	if (args->verbose)
 		print_result(ko);
 	return (ko);
 }
 
-void	test_ft_strlen(t_args *args)
+void	test_ft_atoi_base(t_args *args)
 {
 	static char	done = FALSE;
 	char		ko;
-	char		*long_str;
 
 	if (done)
 		return ;
 	if (args->verbose)
-		printf(BOLD "ft_strlen:\n" RESET);
+		printf(BOLD "ft_atoi_base:\n" RESET);
 	else
-		printf(BOLD "ft_strlen:" RESET);
-	ko = test_ft_strlen_case("empty_string:\t", "", args);
-	if (test_ft_strlen_case("one_char_string:", "0", args))
+		printf(BOLD "ft_atoi_base:" RESET);
+	ko = FALSE;
+	if (test_ft_atoi_base_case("1_decimal:\t", "1", "0123456789", args))
 		ko = TRUE;
-	if (test_ft_strlen_case("small_string:\t", "0123456789", args))
+	if (test_ft_atoi_base_case("-1_decimal:\t", "-1", "0123456789", args))
 		ko = TRUE;
-	long_str = "01234567890123456789012345678901234567890123456789"
-		"01234567890123456789012345678901234567890123456789";
-	if (test_ft_strlen_case("long_string:\t", long_str, args))
+	if (test_ft_atoi_base_case("42_decimal:", "42", "0123456789", args))
+		ko = TRUE;
+	if (test_ft_atoi_base_case("-42_decimal:\t", "-42", "0123456789", args))
+		ko = TRUE;
+	if (test_ft_atoi_base_case("0_decimal:\t", "0", "0123456789", args))
 		ko = TRUE;
 	if (!args->verbose)
 		print_result(ko);

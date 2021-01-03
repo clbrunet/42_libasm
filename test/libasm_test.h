@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 06:07:46 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 16:05:31 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@
 # define WHITE		"\x1B[37m"
 # define BOLD		"\x1B[1m"
 
+# define TRUE		1
+# define FALSE		1
+# define ERROR		-1
+# define SUCCESS	0
+# define FAILURE	1
+
 typedef struct s_args
 {
 	char	all;
@@ -54,6 +60,8 @@ ssize_t	ft_write(int fd, const void *buf, size_t count);
 ssize_t	ft_read(int fd, void *buf, size_t count);
 char	*ft_strdup(const char *s);
 
+int	ft_atoi_base(char *str, char *base);
+
 void	print_result(char ko);
 
 int		parse_av(int ac, char **av, t_args *args);
@@ -64,5 +72,4 @@ void	test_ft_strcmp(t_args *args);
 void	test_ft_strdup(t_args *args);
 void	test_ft_write(t_args *args);
 void	test_ft_read(t_args *args);
-
 #endif
