@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/24 09:06:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 15:26:03 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 16:30:21 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static void	init_args(t_args *args)
 	args->write = FALSE;
 	args->read = FALSE;
 	args->strdup = FALSE;
+	args->atoi_base = FALSE;
+	args->list_push_front = FALSE;
+	args->list_size = FALSE;
+	args->list_sort = FALSE;
+	args->list_remove_if = FALSE;
 }
 
 static int	parse_long_flag(char *av, t_args *args)
@@ -92,6 +97,16 @@ static int	parse_ft(char *av, t_args *args)
 		args->read = TRUE;
 	else if (!strcmp(av, "strdup"))
 		args->strdup = TRUE;
+	else if (!strcmp(av, "atoi_base"))
+		args->atoi_base = TRUE;
+	else if (!strcmp(av, "list_push_front"))
+		args->list_push_front = TRUE;
+	else if (!strcmp(av, "list_size"))
+		args->list_size = TRUE;
+	else if (!strcmp(av, "list_sort"))
+		args->list_sort = TRUE;
+	else if (!strcmp(av, "list_remove_if"))
+		args->list_remove_if = TRUE;
 	else
 	{
 		dprintf(2, BOLD RED "%s:" RESET RED " unknown function\n" RESET, av_bp);

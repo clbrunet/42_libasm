@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:06:59 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 15:20:49 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 16:35:31 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	mandatory_part_tests(t_args *args)
 
 static void	bonus_part_tests(t_args *args)
 {
-	(void)args;
+	test_ft_atoi_base(args);
 }
 
 static void	tests(t_args *args)
@@ -83,6 +83,8 @@ static void	tests(t_args *args)
 		test_ft_read(args);
 	if (args->strdup)
 		test_ft_strdup(args);
+	if (args->atoi_base)
+		test_ft_atoi_base(args);
 	if (args->bonus)
 		bonus_part_tests(args);
 	if (args->all)
@@ -91,7 +93,9 @@ static void	tests(t_args *args)
 		bonus_part_tests(args);
 	}
 	if (!args->bonus && !args->strlen && !args->strcpy && !args->strcmp
-			&& !args->write && !args->read && !args->strdup)
+			&& !args->write && !args->read && !args->strdup
+			&& !args->atoi_base && !args->list_push_front && !args->list_size
+			&& !args->list_sort && !args->list_sort && !args->list_remove_if)
 		mandatory_part_tests(args);
 }
 

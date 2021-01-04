@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 16:05:31 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/03 22:06:02 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define BOLD		"\x1B[1m"
 
 # define TRUE		1
-# define FALSE		1
+# define FALSE		0
 # define ERROR		-1
 # define SUCCESS	0
 # define FAILURE	1
@@ -51,7 +51,18 @@ typedef struct s_args
 	char	write;
 	char	read;
 	char	strdup;
+	char	atoi_base;
+	char	list_push_front;
+	char	list_size;
+	char	list_sort;
+	char	list_remove_if;
 }			t_args;
+
+typedef struct	s_list
+{
+	void			*data;
+	struct s_list	*next;
+}				t_list;
 
 size_t	ft_strlen(const char *s);
 char	*ft_strcpy(char *dest, const char *src);
@@ -60,7 +71,8 @@ ssize_t	ft_write(int fd, const void *buf, size_t count);
 ssize_t	ft_read(int fd, void *buf, size_t count);
 char	*ft_strdup(const char *s);
 
-int	ft_atoi_base(char *str, char *base);
+int		atoi_base_c_piscine(char *str, char *base);
+int		ft_atoi_base(char *str, char *base);
 
 void	print_result(char ko);
 
@@ -72,4 +84,7 @@ void	test_ft_strcmp(t_args *args);
 void	test_ft_strdup(t_args *args);
 void	test_ft_write(t_args *args);
 void	test_ft_read(t_args *args);
+
+void	test_ft_atoi_base(t_args *args);
+
 #endif
