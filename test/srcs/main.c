@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:06:59 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 16:35:31 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:08:54 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@ void	print_args(t_args *args)
 	printf("write: %i\n", args->write);
 	printf("read: %i\n", args->read);
 	printf("strdup: %i\n", args->strdup);
+	printf("atoi_base: %i\n", args->atoi_base);
+	printf("list_push_front: %i\n", args->list_push_front);
+	printf("list_size: %i\n", args->list_size);
+	printf("list_sort: %i\n", args->list_sort);
+	printf("list_remove_if: %i\n", args->list_remove_if);
 }
 
-static int	mandatory_part_tests(t_args *args)
+static void	mandatory_part_tests(t_args *args)
 {
 	test_ft_strlen(args);
 	test_ft_strcpy(args);
@@ -61,12 +66,14 @@ static int	mandatory_part_tests(t_args *args)
 	test_ft_write(args);
 	test_ft_read(args);
 	test_ft_strdup(args);
-	return (SUCCESS);
 }
 
 static void	bonus_part_tests(t_args *args)
 {
 	test_ft_atoi_base(args);
+	/* if (FT_LIST_PUSH_FRONT) */
+	/* test_ft_list_push_front(args); */
+	test_ft_list_size(args);
 }
 
 static void	tests(t_args *args)
@@ -85,6 +92,8 @@ static void	tests(t_args *args)
 		test_ft_strdup(args);
 	if (args->atoi_base)
 		test_ft_atoi_base(args);
+	if (args->list_size)
+		test_ft_list_size(args);
 	if (args->bonus)
 		bonus_part_tests(args);
 	if (args->all)

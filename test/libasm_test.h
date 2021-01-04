@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 22:06:02 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 11:27:02 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,40 @@
 # define ERROR		-1
 # define SUCCESS	0
 # define FAILURE	1
+
+# ifndef FT_STRLEN
+#  define FT_STRLEN 0
+# endif
+# ifndef FT_STRCPY 
+#  define FT_STRCPY 0
+# endif
+# ifndef FT_STRCMP 
+#  define FT_STRCMP 0
+# endif
+# ifndef FT_WRITE 
+#  define FT_WRITE 0
+# endif
+# ifndef FT_READ 
+#  define FT_READ 0
+# endif
+# ifndef FT_STRDUP 
+#  define FT_STRDUP 0
+# endif
+# ifndef FT_ATOI_BASE 
+#  define FT_ATOI_BASE 0
+# endif
+# ifndef FT_LIST_PUSH_FRONT 
+#  define FT_LIST_PUSH_FRONT 0
+# endif
+# ifndef FT_LIST_SIZE 
+#  define FT_LIST_SIZE 0
+# endif
+# ifndef FT_LIST_SORT 
+#  define FT_LIST_SORT 0
+# endif
+# ifndef FT_LIST_REMOVE_IF
+#  define FT_LIST_REMOVE_IF	0
+# endif
 
 typedef struct s_args
 {
@@ -71,8 +105,15 @@ ssize_t	ft_write(int fd, const void *buf, size_t count);
 ssize_t	ft_read(int fd, void *buf, size_t count);
 char	*ft_strdup(const char *s);
 
-int		atoi_base_c_piscine(char *str, char *base);
+int		ft_atoi_base_c_piscine(char *str, char *base);
+t_list	*ft_lstnew(void *data);
+int		ft_list_size_libft(t_list *begin_list);
+void	ft_list_push_front_libft(t_list **begin_list, void *data);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+
 int		ft_atoi_base(char *str, char *base);
+int		ft_list_size(t_list *begin_list);
+void	ft_list_push_front(t_list **begin_list, void *data);
 
 void	print_result(char ko);
 
@@ -86,5 +127,7 @@ void	test_ft_write(t_args *args);
 void	test_ft_read(t_args *args);
 
 void	test_ft_atoi_base(t_args *args);
+void	test_ft_list_size(t_args *args);
+void	test_ft_list_push_front(t_args *args);
 
 #endif

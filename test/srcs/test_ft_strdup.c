@@ -6,13 +6,15 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 08:40:24 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/02 18:01:57 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:14:13 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_test.h"
 
-static int	test_ft_strdup_case(char const *test_name, char const *s, t_args *args)
+#if FT_STRDUP
+
+static char	test_ft_strdup_case(char const *test_name, char const *s, t_args *args)
 {
 	char	ko;
 	char	*ft_dup;
@@ -82,3 +84,20 @@ void	test_ft_strdup(t_args *args)
 	test_ft_strdup2(ko, args);
 	done = TRUE;
 }
+
+#else
+
+void	test_ft_strdup(t_args *args)
+{
+	static char done = FALSE;
+
+	if (done)
+		return ;
+	if (!args->verbose)
+		printf(BOLD "ft_strdup:" RESET YELLOW "\tInactive\n" RESET);
+	else
+		printf(BOLD "ft_strdup:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+	done = TRUE;
+}
+
+#endif

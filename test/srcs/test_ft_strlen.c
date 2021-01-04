@@ -6,13 +6,15 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 16:10:00 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:14:13 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_test.h"
 
-static int	test_ft_strlen_case(char const *test_name, char const *str, t_args *args)
+#if FT_STRLEN
+
+static char	test_ft_strlen_case(char const *test_name, char const *str, t_args *args)
 {
 	char	ko;
 
@@ -53,3 +55,20 @@ void	test_ft_strlen(t_args *args)
 		print_result(ko);
 	done = TRUE;
 }
+
+#else
+
+void	test_ft_strlen(t_args *args)
+{
+	static char done = FALSE;
+
+	if (done)
+		return ;
+	if (!args->verbose)
+		printf(BOLD "ft_strlen:" RESET YELLOW "\tInactive\n" RESET);
+	else
+		printf(BOLD "ft_strlen:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+	done = TRUE;
+}
+
+#endif

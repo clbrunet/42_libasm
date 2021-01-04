@@ -6,13 +6,15 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 15:28:15 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:14:13 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_test.h"
 
-static int	check_written_texts_diffs_error(void *ft_buf, char *buf)
+#if FT_WRITE
+
+static char	check_written_texts_diffs_error(void *ft_buf, char *buf)
 {
 	free(ft_buf);
 	free(buf);
@@ -24,7 +26,7 @@ static int	check_written_texts_diffs_error(void *ft_buf, char *buf)
 	return (ERROR);
 }
 
-static int	check_returns_diffs(int fd, void const *buf, size_t len, ssize_t *ret)
+static char	check_returns_diffs(int fd, void const *buf, size_t len, ssize_t *ret)
 {
 	char	ko;
 	int		ft_errno;
@@ -42,7 +44,7 @@ static int	check_returns_diffs(int fd, void const *buf, size_t len, ssize_t *ret
 	return (ko);
 }
 
-static int	check_written_texts_diffs(int fd, size_t len)
+static char	check_written_texts_diffs(int fd, size_t len)
 {
 	char	*ft_buf;
 	char	*buf;
@@ -66,7 +68,7 @@ static int	check_written_texts_diffs(int fd, size_t len)
 	return (ko);
 }
 
-static int	test_ft_write_case(char const *test_name, int fd, void const *buf, t_args *args)
+static char	test_ft_write_case(char const *test_name, int fd, void const *buf, t_args *args)
 {
 	size_t	len;
 	char	ko;
@@ -153,3 +155,20 @@ void	test_ft_write(t_args *args)
 	test_ft_write2(fd, args);
 	done = TRUE;
 }
+
+#else
+
+void	test_ft_write(t_args *args)
+{
+	static char done = FALSE;
+
+	if (done)
+		return ;
+	if (!args->verbose)
+		printf(BOLD "ft_write:" RESET YELLOW "\tInactive\n" RESET);
+	else
+		printf(BOLD "ft_write:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+	done = TRUE;
+}
+
+#endif

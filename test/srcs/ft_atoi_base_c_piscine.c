@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi_base_c_piscine.c                              :+:      :+:    :+:   */
+/*   ft_atoi_base_c_piscine.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 18:33:17 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 20:03:01 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 06:30:57 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	ft_calculate_nb(char *str, char *base, int base_len, int sign)
 	return (nb);
 }
 
-int			atoi_base_c_piscine(char *str, char *base)
+int			ft_atoi_base_c_piscine(char *str, char *base)
 {
 	int			base_len;
 	int			sign;

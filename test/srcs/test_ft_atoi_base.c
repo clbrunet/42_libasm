@@ -6,11 +6,13 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 20:04:34 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:14:14 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_test.h"
+
+#if FT_ATOI_BASE
 
 static char	test_ft_atoi_base_case(char const *test_name, char *str, char *base, t_args *args)
 {
@@ -21,7 +23,7 @@ static char	test_ft_atoi_base_case(char const *test_name, char *str, char *base,
 	else if (args->verbose)
 		printf("\t%s", test_name);
 	ko = FALSE;
-	if (atoi_base_c_piscine(str, base) != ft_atoi_base(str, base))
+	if (ft_atoi_base_c_piscine(str, base) != ft_atoi_base(str, base))
 		ko = TRUE;
 	if (args->verbose)
 		print_result(ko);
@@ -99,3 +101,20 @@ void	test_ft_atoi_base(t_args *args)
 		print_result(ko);
 	done = TRUE;
 }
+
+#else
+
+void	test_ft_atoi_base(t_args *args)
+{
+	static char done = FALSE;
+
+	if (done)
+		return ;
+	if (!args->verbose)
+		printf(BOLD "ft_atoi_base:" RESET YELLOW "\tInactive\n" RESET);
+	else
+		printf(BOLD "ft_atoi_base:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+	done = TRUE;
+}
+
+#endif

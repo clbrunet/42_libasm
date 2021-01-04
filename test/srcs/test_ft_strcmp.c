@@ -6,13 +6,15 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:40:18 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/02 10:05:29 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:16:07 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_test.h"
 
-static int	simplify_sign(int nb)
+#if FT_STRCMP
+
+static char	simplify_sign(int nb)
 {
 	if (nb < 0)
 		return (-1);
@@ -22,7 +24,7 @@ static int	simplify_sign(int nb)
 		return (1);
 }
 
-static int	test_ft_strcmp_case(char const *test_name, char const *s1, char const *s2, t_args *args)
+static char	test_ft_strcmp_case(char const *test_name, char const *s1, char const *s2, t_args *args)
 {
 	char	ko;
 
@@ -86,3 +88,20 @@ void	test_ft_strcmp(t_args *args)
 	test_ft_strcmp2(ko, args);
 	done = TRUE;
 }
+
+#else
+
+void	test_ft_strcmp(t_args *args)
+{
+	static char done = FALSE;
+
+	if (done)
+		return ;
+	if (!args->verbose)
+		printf(BOLD "ft_strcmp:" RESET YELLOW "\tInactive\n" RESET);
+	else
+		printf(BOLD "ft_strcmp:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+	done = TRUE;
+}
+
+#endif

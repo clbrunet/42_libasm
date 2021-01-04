@@ -6,13 +6,15 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/03 15:27:16 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/04 14:12:57 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_test.h"
 
-static int	check_returns_and_read_texts_diffs(int fd, size_t count, char *ft_buf, char *buf)
+#if FT_READ
+
+static char	check_returns_and_read_texts_diffs(int fd, size_t count, char *ft_buf, char *buf)
 {
 	char	ko;
 	ssize_t	ret;
@@ -35,7 +37,7 @@ static int	check_returns_and_read_texts_diffs(int fd, size_t count, char *ft_buf
 	return (ko);
 }
 
-static int	test_ft_read_case(char const *test_name, int fd, size_t count, t_args *args)
+static char	test_ft_read_case(char const *test_name, int fd, size_t count, t_args *args)
 {
 	char	ko;
 	char	*ft_buf;
@@ -133,3 +135,20 @@ void	test_ft_read(t_args *args)
 	test_ft_read2(fd, args);
 	done = TRUE;
 }
+
+#else
+
+void	test_ft_read(t_args *args)
+{
+	static char done = FALSE;
+
+	if (done)
+		return ;
+	if (!args->verbose)
+		printf(BOLD "ft_read:" RESET YELLOW "\tInactive\n" RESET);
+	else
+		printf(BOLD "ft_read:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+	done = TRUE;
+}
+
+#endif
