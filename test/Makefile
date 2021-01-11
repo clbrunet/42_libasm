@@ -1,18 +1,18 @@
 NAME		=	libasm_test
 LIBASM		=	../libasm.a
 
-FT_STRLEN	=	1
-FT_STRCPY	=	1
-FT_STRCMP	=	0
-FT_WRITE	=	1
-FT_READ		=	1
-FT_STRDUP	=	1
+FT_STRLEN	:=	$(shell if test -f "../srcs/ft_strlen.s"; then echo "1"; else echo "0"; fi)
+FT_STRCPY	:=	$(shell if test -f "../srcs/ft_strcpy.s"; then echo "1"; else echo "0"; fi)
+FT_STRCMP	:=	$(shell if test -f "../srcs/ft_strcmp.s"; then echo "1"; else echo "0"; fi)
+FT_WRITE	:=	$(shell if test -f "../srcs/ft_write.s"; then echo "1"; else echo "0"; fi)
+FT_READ		:=	$(shell if test -f "../srcs/ft_read.s"; then echo "1"; else echo "0"; fi)
+FT_STRDUP	:=	$(shell if test -f "../srcs/ft_strdup.s"; then echo "1"; else echo "0"; fi)
 
-FT_ATOI_BASE		=	1
-FT_LIST_PUSH_FRONT	=	1
-FT_LIST_SIZE		=	1
-FT_LIST_SORT		=	0
-FT_LIST_REMOVE_IF	=	0
+FT_ATOI_BASE		:=	$(shell if test -f "../srcs/ft_atoi_base.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_PUSH_FRONT	:=	$(shell if test -f "../srcs/ft_list_push_front.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_SIZE		:=	$(shell if test -f "../srcs/ft_list_size.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_SORT		:=	$(shell if test -f "../srcs/ft_list_sort.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_REMOVE_IF	:=	$(shell if test -f "../srcs/ft_list_remove_if.s"; then echo "1"; else echo "0"; fi)
 
 SRCS		=	srcs/main.c		\
 				srcs/parse.c	\
