@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 06:36:03 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/04 14:14:13 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/14 15:54:46 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	test_ft_list_size(t_args *args)
 	if (!args->verbose)
 		printf(BOLD "ft_list_size:" RESET YELLOW "\tInactive\n" RESET);
 	else
-		printf(BOLD "ft_list_size:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+		printf(BOLD "ft_list_size:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 

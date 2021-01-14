@@ -74,7 +74,7 @@ void	test_ft_strcpy(t_args *args)
 	if (!args->verbose)
 		printf(BOLD "ft_strcpy:" RESET YELLOW "\tInactive\n" RESET);
 	else
-		printf(BOLD "ft_strcpy:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+		printf(BOLD "ft_strcpy:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 

@@ -82,7 +82,7 @@ void	test_ft_list_push_front(t_args *args)
 		printf(BOLD "ft_list_push_front:" RESET YELLOW "\tInactive\n" RESET);
 	else
 		printf(BOLD "ft_list_push_front:\n" RESET
-				YELLOW "\t\t\t\tInactive\n" RESET);
+				YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 

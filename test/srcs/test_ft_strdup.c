@@ -96,7 +96,7 @@ void	test_ft_strdup(t_args *args)
 	if (!args->verbose)
 		printf(BOLD "ft_strdup:" RESET YELLOW "\tInactive\n" RESET);
 	else
-		printf(BOLD "ft_strdup:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+		printf(BOLD "ft_strdup:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 

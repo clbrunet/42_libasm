@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/04 14:14:14 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/14 15:59:23 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	test_ft_atoi_base(t_args *args)
 	if (!args->verbose)
 		printf(BOLD "ft_atoi_base:" RESET YELLOW "\tInactive\n" RESET);
 	else
-		printf(BOLD "ft_atoi_base:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+		printf(BOLD "ft_atoi_base:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 

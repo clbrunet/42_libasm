@@ -167,7 +167,7 @@ void	test_ft_write(t_args *args)
 	if (!args->verbose)
 		printf(BOLD "ft_write:" RESET YELLOW "\tInactive\n" RESET);
 	else
-		printf(BOLD "ft_write:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+		printf(BOLD "ft_write:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 

@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:40:18 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/04 14:16:07 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/14 15:55:44 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	test_ft_strcmp(t_args *args)
 	if (!args->verbose)
 		printf(BOLD "ft_strcmp:" RESET YELLOW "\tInactive\n" RESET);
 	else
-		printf(BOLD "ft_strcmp:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+		printf(BOLD "ft_strcmp:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 

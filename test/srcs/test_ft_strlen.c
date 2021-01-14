@@ -67,7 +67,7 @@ void	test_ft_strlen(t_args *args)
 	if (!args->verbose)
 		printf(BOLD "ft_strlen:" RESET YELLOW "\tInactive\n" RESET);
 	else
-		printf(BOLD "ft_strlen:\n" RESET YELLOW "\t\t\t\tInactive\n" RESET);
+		printf(BOLD "ft_strlen:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;
 }
 
