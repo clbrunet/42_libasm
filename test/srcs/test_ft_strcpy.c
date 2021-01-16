@@ -28,7 +28,7 @@ static char	test_ft_strcpy_case(char const *test_name, char const *src, t_args *
 	strcpy(dest, src);
 	if (ft_dest != ft_strcpy(ft_dest, src))
 		ko = TRUE;
-	if (strcmp(dest, ft_dest))
+	else if (strcmp(dest, ft_dest))
 		ko = TRUE;
 	if (args->verbose)
 		print_result(ko);

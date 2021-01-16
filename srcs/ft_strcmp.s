@@ -4,9 +4,10 @@ BITS 64
 
 			extern	ft_strlen
 
+; int	ft_strcmp(rdi: const char *s1, rsi: const char *s2);
 			global	ft_strcmp
 
-; int	ft_strcmp(rdi: const char *s1, rsi: const char *s2);
+; repe cmpsb version of ft_strcmp
 
 ft_strcmp:	enter	24, 0
 			mov		[rbp - 8], rdi
@@ -29,7 +30,7 @@ ft_strcmp:	enter	24, 0
 			leave
 			ret
 
-; lodsb version of ft_strcmp
+; lodsb while loop version of ft_strcmp
 
 ; ft_strcmp:	enter	0, 0
 ; 			cld
@@ -49,7 +50,7 @@ ft_strcmp:	enter	24, 0
 ; 			leave
 ; 			ret
 
-; simple version of ft_strcmp
+; simple while loop version of ft_strcmp
 
 ; ft_strcmp:	enter	0, 0
 
@@ -61,6 +62,7 @@ ft_strcmp:	enter	24, 0
 ; 			inc		rdi
 ; 			inc		rsi
 ; 			jmp		.while
+
 ; .end:		movzx	rax, al
 ; 			movzx	r10, byte [rsi]
 ; 			sub		rax, r10
