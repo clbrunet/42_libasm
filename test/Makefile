@@ -36,7 +36,7 @@ DEFINES		=	-D FT_STRLEN=$(FT_STRLEN) -D FT_STRCPY=$(FT_STRCPY) -D FT_STRCMP=$(FT
 				-D FT_WRITE=$(FT_WRITE) -D FT_READ=$(FT_READ) -D FT_STRDUP=$(FT_STRDUP) \
 			  	-D FT_ATOI_BASE=$(FT_ATOI_BASE) -D FT_LIST_PUSH_FRONT=$(FT_LIST_PUSH_FRONT) \
 			  	-D FT_LIST_SIZE=$(FT_LIST_SIZE) -D FT_LIST_SORT=$(FT_LIST_SORT) -D FT_LIST_REMOVE_IF=$(FT_LIST_REMOVE_IF)
-CFLAGS		=	-Wall -Wextra -Werror -I ./ -g3 -fsanitize=address $(DEFINES)
+CFLAGS		=	-Wall -Wextra -Werror -I ./ $(DEFINES) -g3
 
 all			:	$(NAME)
 
@@ -44,7 +44,7 @@ libasm		:
 				make -C ../
 
 $(NAME)		:	libasm $(OBJS)
-				$(CC) -g3 -fsanitize=address -o $(NAME) $(OBJS) $(LIBASM)
+				$(CC) -g3 -o $(NAME) $(OBJS) $(LIBASM)
 
 clean		:
 				rm -f $(OBJS)

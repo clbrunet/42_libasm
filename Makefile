@@ -1,6 +1,8 @@
 NAME	=	libasm.a
 
-SRCS	=	srcs/ft_strlen.s
+SRCS	=	srcs/ft_strlen.s	\
+			srcs/ft_strcpy.s	\
+			srcs/ft_strcmp.s
 OBJS	=	$(SRCS:.s=.o)
 
 # SRCS	=	srcs/main.c	\
@@ -11,7 +13,7 @@ ASMC	=	nasm
 ASMFLAGS=	-f elf64 -g
 
 CC		=	clang
-CFLAGS	=	-Wall -Wextra -Werror -g
+CFLAGS	=	-Wall -Wextra -Werror -g3
 
 all		:	$(NAME)
 
