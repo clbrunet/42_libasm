@@ -123,7 +123,7 @@ static void	test_ft_write2(int fd, t_args *args)
 	if (ko != ERROR && ret)
 		ko = ret;
 	close(fd);
-	fd = open("./wrong_file", O_RDWR);
+	open("./wrong_file", O_RDWR);
 	ret = test_ft_write_case("wrong_fd:\t", 666, "0123456789", args);
 	if (ko != ERROR && ret)
 		ko = ret;

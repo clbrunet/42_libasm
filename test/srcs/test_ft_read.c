@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/04 14:12:57 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/17 17:47:52 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void	test_ft_read3(char ko, t_args *args)
 {
 	char	ret;
 
+	open("./wrong_file", O_RDWR);
 	ret = test_ft_read_case("wrong_fd:\t", 666, 10, args);
 	if (ko != ERROR && ret)
 		ko = ret;
