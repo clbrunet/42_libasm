@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/17 17:47:52 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/17 17:59:41 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static char	check_returns_and_read_texts_diffs(int fd, size_t count, char *ft_bu
 	if (ret == ERROR)
 		ft_errno = errno;
 	lseek(fd, 0, SEEK_SET);
-	ko = SUCCESS;
+	ko = FALSE;
 	if (ret != read(fd, buf, count))
 		ko = TRUE;
 	else if (ret == ERROR && ft_errno != errno)
 		ko = TRUE;
 	ft_buf[count] = '\0';
 	buf[count] = '\0';
-	if (strcmp(ft_buf, buf) != 0)
+	if (ret != ERROR && strcmp(ft_buf, buf) != 0)
 		ko = TRUE;
 	return (ko);
 }
