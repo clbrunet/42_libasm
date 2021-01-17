@@ -8,7 +8,6 @@ BITS 64
 			global	ft_strcmp
 
 ; repe cmpsb version of ft_strcmp
-
 ft_strcmp:	enter	24, 0
 			mov		[rbp - 8], rdi
 			mov		[rbp - 16], rsi
@@ -31,7 +30,6 @@ ft_strcmp:	enter	24, 0
 			ret
 
 ; lodsb while loop version of ft_strcmp
-
 ; ft_strcmp:	enter	0, 0
 ; 			cld
 
@@ -51,7 +49,6 @@ ft_strcmp:	enter	24, 0
 ; 			ret
 
 ; simple while loop version of ft_strcmp
-
 ; ft_strcmp:	enter	0, 0
 
 ; .while:		mov		al, byte [rdi]

@@ -6,7 +6,6 @@ BITS 64
 			global	ft_strlen
 
 ; repnz scasb version of ft_strlen
-
  ft_strlen:	enter	8, 0
  			mov		[rbp - 8], rdi
  			mov		rcx, -1
@@ -20,7 +19,6 @@ BITS 64
  			ret
 
 ; scasb while loop version of ft_strlen
-
 ; ft_strlen:	enter	8, 0
 ; 			mov		[rbp - 8], rdi
 ; 			xor		rax, rax
@@ -37,7 +35,6 @@ BITS 64
 ; 			ret
 
 ; simple while loop version of ft_strlen
-
 ; ft_strlen:	enter	8, 0
 ; 			mov		[rbp - 8], rdi
 

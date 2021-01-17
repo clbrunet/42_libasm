@@ -8,7 +8,6 @@ BITS 64
 			global	ft_strcpy
 
 ; rep movsb version of ft_strcpy
-
 ft_strcpy:	enter	16, 0
 			mov		[rbp - 8], rdi
 			mov		[rbp - 16], rsi
@@ -25,7 +24,6 @@ ft_strcpy:	enter	16, 0
 			ret
 
 ; lodsb and stosb while loop version of ft_strcpy
-
 ; ft_strcpy:	enter	8, 0
 ; 			mov		[rbp - 8], rdi
 ; 			cld
@@ -42,7 +40,6 @@ ft_strcpy:	enter	16, 0
 ; 			ret
 
 ; simple while loop version of ft_strcpy
-
 ; ft_strcpy:	enter	0, 0
 ; 			mov		rax, rdi
 
