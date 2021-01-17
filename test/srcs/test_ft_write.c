@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/17 15:46:51 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/17 16:49:34 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	check_written_texts_diffs(int fd, size_t len)
 	ft_buf = malloc((len + 1) * sizeof(char));
 	buf = malloc((len + 1) * sizeof(char));
 	if (!buf || !ft_buf
-			|| read(fd, ft_buf, len) == ERROR || read(fd, buf, len) == ERROR)
+		|| read(fd, ft_buf, len) == ERROR || read(fd, buf, len) == ERROR)
 		return (check_written_texts_diffs_error(ft_buf, buf));
 	ft_buf[len] = '\0';
 	buf[len] = '\0';
@@ -123,6 +123,7 @@ static void	test_ft_write2(int fd, t_args *args)
 	if (ko != ERROR && ret)
 		ko = ret;
 	close(fd);
+	fd = open("./wrong_file", O_RDWR);
 	ret = test_ft_write_case("wrong_fd:\t", 666, "0123456789", args);
 	if (ko != ERROR && ret)
 		ko = ret;
@@ -160,7 +161,7 @@ void	test_ft_write(t_args *args)
 
 void	test_ft_write(t_args *args)
 {
-	static char done = FALSE;
+	static char	done = FALSE;
 
 	if (done)
 		return ;
