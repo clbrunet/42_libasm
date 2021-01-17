@@ -3,30 +3,20 @@ NAME	=	libasm.a
 SRCS	=	srcs/ft_strlen.s	\
 			srcs/ft_strcpy.s	\
 			srcs/ft_strcmp.s	\
-			srcs/ft_write.s
+			srcs/ft_write.s		\
+			srcs/ft_read.s
 OBJS	=	$(SRCS:.s=.o)
-
-# SRCS	=	srcs/main.c	\
-			srcs/ft_strlen.s
-# OBJS	=	$(OBJS:.c=.o)
 
 ASMC	=	nasm
 ASMFLAGS=	-f elf64 -g
-
-CC		=	clang
-CFLAGS	=	-Wall -Wextra -Werror -g3
 
 all		:	$(NAME)
 
 .s.o:
 			$(ASMC) $(ASMFLAGS) -o $(<:.s=.o) $<
-.c.o:
-			$(CC) $(CFLAGS) -c -o $(<:.c=.o) $<
 
 $(NAME)	:	$(OBJS)
 			ar -rcs $(NAME) $(OBJS)
-			# ld $(OBJS)
-			# $(CC) $(CFLAGS) $(OBJS)
 
 clean	:
 			rm -f $(OBJS)
