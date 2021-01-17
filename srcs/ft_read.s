@@ -4,7 +4,7 @@ BITS 64
 
 			extern	__errno_location
 
-; ssize_t read(rdi: int fd, rsi: void *buf, rdx: size_t count);
+; ssize_t	read(rdi: int fd, rsi: void *buf, rdx: size_t count);
 			global	ft_read
 
 ft_read:	enter	8, 0

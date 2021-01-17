@@ -4,7 +4,7 @@ BITS 64
 
 			extern	__errno_location
 
-; ssize_t ft_write(rdi: int fd, rsi: const void *buf, rdx: size_t count);
+; ssize_t	ft_write(rdi: int fd, rsi: const void *buf, rdx: size_t count);
 			global	ft_write
 
 ft_write:	enter	8, 0
