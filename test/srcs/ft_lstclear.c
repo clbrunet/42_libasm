@@ -12,6 +12,8 @@
 
 #include "libasm_test.h"
 
+#if BONUS_PRESENT
+
 static unsigned	ft_lstsize_free_last(t_list *lst, void (*del)(void *))
 {
 	t_list		*iter;
@@ -53,3 +55,5 @@ void			ft_lstclear(t_list **lst, void (*del)(void *))
 	}
 	*lst = (t_list *)NULL;
 }
+
+#endif

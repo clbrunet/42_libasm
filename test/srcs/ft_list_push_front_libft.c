@@ -12,6 +12,8 @@
 
 #include "libasm_test.h"
 
+#if BONUS_PRESENT
+
 void	ft_list_push_front_libft(t_list **begin_list, void *data)
 {
 	t_list	*new;
@@ -29,3 +31,5 @@ void	ft_list_push_front_libft(t_list **begin_list, void *data)
 	new->next = *begin_list;
 	*begin_list = new;
 }
+
+#endif

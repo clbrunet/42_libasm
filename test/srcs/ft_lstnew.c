@@ -12,6 +12,8 @@
 
 #include "libasm_test.h"
 
+#if BONUS_PRESENT
+
 t_list	*ft_lstnew(void *data)
 {
 	t_list	*new;
@@ -22,3 +24,5 @@ t_list	*ft_lstnew(void *data)
 	new->next = (t_list *)NULL;
 	return (new);
 }
+
+#endif

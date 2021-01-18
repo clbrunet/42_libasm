@@ -1,6 +1,8 @@
 NAME		=	libasm_test
 LIBASM		=	../libasm.a
 
+LIBASM_RULE	:=	$(shell if ls ../srcs/*_bonus.s 1> /dev/null 2>&1; then echo "libasm_bonus"; else echo "libasm"; fi)
+
 FT_STRLEN	:=	$(shell if test -f "../srcs/ft_strlen.s"; then echo "1"; else echo "0"; fi)
 FT_STRCPY	:=	$(shell if test -f "../srcs/ft_strcpy.s"; then echo "1"; else echo "0"; fi)
 FT_STRCMP	:=	$(shell if test -f "../srcs/ft_strcmp.s"; then echo "1"; else echo "0"; fi)
@@ -8,11 +10,12 @@ FT_WRITE	:=	$(shell if test -f "../srcs/ft_write.s"; then echo "1"; else echo "0
 FT_READ		:=	$(shell if test -f "../srcs/ft_read.s"; then echo "1"; else echo "0"; fi)
 FT_STRDUP	:=	$(shell if test -f "../srcs/ft_strdup.s"; then echo "1"; else echo "0"; fi)
 
-FT_ATOI_BASE		:=	$(shell if test -f "../srcs/ft_atoi_base.s"; then echo "1"; else echo "0"; fi)
-FT_LIST_PUSH_FRONT	:=	$(shell if test -f "../srcs/ft_list_push_front.s"; then echo "1"; else echo "0"; fi)
-FT_LIST_SIZE		:=	$(shell if test -f "../srcs/ft_list_size.s"; then echo "1"; else echo "0"; fi)
-FT_LIST_SORT		:=	$(shell if test -f "../srcs/ft_list_sort.s"; then echo "1"; else echo "0"; fi)
-FT_LIST_REMOVE_IF	:=	$(shell if test -f "../srcs/ft_list_remove_if.s"; then echo "1"; else echo "0"; fi)
+BONUS_PRESENT		:=	$(shell if ls ../srcs/*_bonus.s 1> /dev/null 2>&1; then echo "1"; else echo "0"; fi)
+FT_ATOI_BASE		:=	$(shell if test -f "../srcs/ft_atoi_base_bonus.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_PUSH_FRONT	:=	$(shell if test -f "../srcs/ft_list_push_front_bonus.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_SIZE		:=	$(shell if test -f "../srcs/ft_list_size_bonus.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_SORT		:=	$(shell if test -f "../srcs/ft_list_sort_bonus.s"; then echo "1"; else echo "0"; fi)
+FT_LIST_REMOVE_IF	:=	$(shell if test -f "../srcs/ft_list_remove_if_bonus.s"; then echo "1"; else echo "0"; fi)
 
 SRCS		=	srcs/main.c		\
 				srcs/parse.c	\
@@ -32,9 +35,9 @@ SRCS		=	srcs/main.c		\
 OBJS		=	$(SRCS:.c=.o)
 
 CC			=	clang
-DEFINES		=	-D FT_STRLEN=$(FT_STRLEN) -D FT_STRCPY=$(FT_STRCPY) -D FT_STRCMP=$(FT_STRCMP) \
-				-D FT_WRITE=$(FT_WRITE) -D FT_READ=$(FT_READ) -D FT_STRDUP=$(FT_STRDUP) \
-			  	-D FT_ATOI_BASE=$(FT_ATOI_BASE) -D FT_LIST_PUSH_FRONT=$(FT_LIST_PUSH_FRONT) \
+DEFINES		=	-D BONUS_PRESENT=$(BONUS_PRESENT) -D FT_STRLEN=$(FT_STRLEN) -D FT_STRCPY=$(FT_STRCPY) \
+				-D FT_STRCMP=$(FT_STRCMP) -D FT_WRITE=$(FT_WRITE) -D FT_READ=$(FT_READ) \
+				-D FT_STRDUP=$(FT_STRDUP) -D FT_ATOI_BASE=$(FT_ATOI_BASE) -D FT_LIST_PUSH_FRONT=$(FT_LIST_PUSH_FRONT) \
 			  	-D FT_LIST_SIZE=$(FT_LIST_SIZE) -D FT_LIST_SORT=$(FT_LIST_SORT) -D FT_LIST_REMOVE_IF=$(FT_LIST_REMOVE_IF)
 CFLAGS		=	-Wall -Wextra -Werror -I ./ -I ../ $(DEFINES) -g3
 
@@ -43,7 +46,10 @@ all			:	$(NAME)
 libasm		:
 				make -C ../
 
-$(NAME)		:	libasm $(OBJS)
+libasm_bonus:
+				make -C ../ bonus
+
+$(NAME)		:	$(LIBASM_RULE) $(OBJS)
 				$(CC) -g3 -o $(NAME) $(OBJS) $(LIBASM)
 
 clean		:

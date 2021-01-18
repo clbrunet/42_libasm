@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/18 07:42:18 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/18 10:39:35 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,15 @@
 # include <fcntl.h>
 # include <errno.h>
 
-# include "libasm.h"
+# ifndef BONUS_PRESENT
+#  define BONUS_PRESENT 0
+# endif
+
+# if BONUS_PRESENT
+#  include "libasm_bonus.h"
+# else
+#  include "libasm.h"
+# endif
 
 # define RESET		"\x1B[0m"
 # define BLACK		"\x1B[30m"
@@ -94,21 +102,13 @@ typedef struct s_args
 	char	list_remove_if;
 }			t_args;
 
-typedef struct	s_list
-{
-	void			*data;
-	struct s_list	*next;
-}				t_list;
-
+# if BONUS_PRESENT
 int		ft_atoi_base_c_piscine(char *str, char *base);
 t_list	*ft_lstnew(void *data);
 int		ft_list_size_libft(t_list *begin_list);
 void	ft_list_push_front_libft(t_list **begin_list, void *data);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
-
-int		ft_atoi_base(char *str, char *base);
-int		ft_list_size(t_list *begin_list);
-void	ft_list_push_front(t_list **begin_list, void *data);
+# endif
 
 void	print_result(char ko);
 

@@ -8,6 +8,10 @@ SRCS	=	srcs/ft_strlen.s	\
 			srcs/ft_strdup.s
 OBJS	=	$(SRCS:.s=.o)
 
+BONUS_SRCS=	$(SRCS)						\
+			srcs/ft_atoi_base_bonus.s
+BONUS_OBJS=	$(BONUS_SRCS:.s=.o)
+
 ASMC	=	nasm
 ASMFLAGS=	-f elf64 -g
 
@@ -19,8 +23,11 @@ all		:	$(NAME)
 $(NAME)	:	$(OBJS)
 			ar -rcs $(NAME) $(OBJS)
 
+bonus	:	$(BONUS_OBJS)
+			ar -rcs $(NAME) $(BONUS_OBJS)
+
 clean	:
-			rm -f $(OBJS)
+			rm -f $(BONUS_OBJS)
 
 fclean	:	clean
 			rm -f $(NAME)

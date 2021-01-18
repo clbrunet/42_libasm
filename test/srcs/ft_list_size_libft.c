@@ -12,6 +12,8 @@
 
 #include "libasm_test.h"
 
+#if BONUS_PRESENT
+
 int		ft_list_size_libft(t_list *begin_list)
 {
 	int		count;
@@ -24,3 +26,5 @@ int		ft_list_size_libft(t_list *begin_list)
 	}
 	return (count);
 }
+
+#endif
