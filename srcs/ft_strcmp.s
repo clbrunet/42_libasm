@@ -20,12 +20,19 @@ ft_strcmp:	enter	24, 0
 			cmovnb	rcx, [rbp - 24]
 			mov		rdi, [rbp - 8]
 			mov		rsi, [rbp - 16]
+			cmp		rcx, 0
+			jz		.end
 			cld
 			repe	cmpsb
-			dec		rdi
+			jne		.dec
+			jmp		.end
+
+.dec:		dec		rdi
 			dec		rsi
-			mov		rax, [rdi]
-			sub		rax, [rsi]
+
+.end:		movzx	rax, byte [rdi]
+			movzx	r10, byte [rsi]
+			sub		rax, r10
 			leave
 			ret
 
