@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/04 11:27:02 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/18 07:42:18 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <errno.h>
+
+# include "libasm.h"
 
 # define RESET		"\x1B[0m"
 # define BLACK		"\x1B[30m"
@@ -97,13 +99,6 @@ typedef struct	s_list
 	void			*data;
 	struct s_list	*next;
 }				t_list;
-
-size_t	ft_strlen(const char *s);
-char	*ft_strcpy(char *dest, const char *src);
-int		ft_strcmp(const char *s1, const char *s2);
-ssize_t	ft_write(int fd, const void *buf, size_t count);
-ssize_t	ft_read(int fd, void *buf, size_t count);
-char	*ft_strdup(const char *s);
 
 int		ft_atoi_base_c_piscine(char *str, char *base);
 t_list	*ft_lstnew(void *data);

@@ -2,3 +2,4 @@
 -Wextra
 -Wall
 -I./
+-I../
