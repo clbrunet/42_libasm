@@ -4,10 +4,6 @@ BITS 64
 
 					extern	ft_strlen
 
-					static	ft_isspace
-					static	get_index
-					static	check_base_char
-					static	check_base
 					global	ft_atoi_base
 
 ; int	ft_isspace(rdi: int c);
