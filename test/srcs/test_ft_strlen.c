@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/04 14:14:13 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/19 07:22:47 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	test_ft_strlen_case(char const *test_name, char const *str, t_args *
 	else if (args->verbose)
 		printf("\t%s", test_name);
 	ko = FALSE;
-	if (strlen(str) != ft_strlen(str))
+	if (ft_strlen(str) != strlen(str))
 		ko = TRUE;
 	if (args->verbose)
 		print_result(ko);

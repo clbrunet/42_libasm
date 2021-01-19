@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:40:18 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/14 18:29:10 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/19 07:23:23 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static char	test_ft_strcpy_case(char const *test_name, char const *src, t_args *
 		printf("\tft_strcpy(dest, \"%s\"):", src);
 	else if (args->verbose)
 		printf("\t%s", test_name);
-	strcpy(dest, src);
 	if (ft_dest != ft_strcpy(ft_dest, src))
 		ko = TRUE;
-	else if (strcmp(dest, ft_dest))
+	strcpy(dest, src);
+	if (strcmp(dest, ft_dest))
 		ko = TRUE;
 	if (args->verbose)
 		print_result(ko);

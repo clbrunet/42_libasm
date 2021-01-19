@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:30:37 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/14 15:59:23 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/19 09:45:44 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	test_ft_atoi_base_case(char const *test_name, char *str, char *base,
 	else if (args->verbose)
 		printf("\t%s", test_name);
 	ko = FALSE;
-	if (ft_atoi_base_c_piscine(str, base) != ft_atoi_base(str, base))
+	if (ft_atoi_base(str, base) != ft_atoi_base_c_piscine(str, base))
 		ko = TRUE;
 	if (args->verbose)
 		print_result(ko);
@@ -48,13 +48,17 @@ static void	test_ft_atoi_base_basic_cases(char *ko, t_args *args)
 		*ko = TRUE;
 	if (test_ft_atoi_base_case("int_min_deci:\t", "-2147483648", "0123456789", args))
 		*ko = TRUE;
+	if (test_ft_atoi_base_case("42?42_deci:\t", "42?42", "0123456789", args))
+		*ko = TRUE;
+	if (test_ft_atoi_base_case("42a42_deci:\t", "42a42", "0123456789", args))
+		*ko = TRUE;
 }
 
 static void	test_ft_atoi_base_complex_cases(char *ko, t_args *args)
 {
-	if (test_ft_atoi_base_case("multiple_signs1:", "--+42", "0123456789", args))
+	if (test_ft_atoi_base_case("multiple_signs_posite:", "--+42", "0123456789", args))
 		*ko = TRUE;
-	if (test_ft_atoi_base_case("multiple_signs2:", "+-+42", "0123456789", args))
+	if (test_ft_atoi_base_case("multiple_signs_negativ:", "+-+42", "0123456789", args))
 		*ko = TRUE;
 	if (test_ft_atoi_base_case("whitespaces:\t", "\t  \r\n\n\f\t\v  \t\t+42", "0123456789", args))
 		*ko = TRUE;
@@ -68,6 +72,10 @@ static void	test_ft_atoi_base_complex_cases(char *ko, t_args *args)
 
 static void	test_ft_atoi_base_error_cases(char *ko, t_args *args)
 {
+	if (test_ft_atoi_base_case("only_whitespaces:", "\t  \r\n\n\f\t\v  \t\t", "0123456789", args))
+		*ko = TRUE;
+	if (test_ft_atoi_base_case("only_signs:\t", "---+++-+--", "0123456789", args))
+		*ko = TRUE;
 	if (test_ft_atoi_base_case("1_len_base:\t", "42", "0", args))
 		*ko = TRUE;
 	if (test_ft_atoi_base_case("2_same_chars_base:", "42", "0123345678", args))
