@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 07:40:51 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/19 12:07:52 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:35:00 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ typedef struct	s_list
 
 int		ft_atoi_base(char *str, char *base);
 int		ft_list_size(t_list *begin_list);
+void	ft_list_push_front(t_list **begin_list, void *data);
+void	ft_list_sort(t_list **begin_list, int (*cmp)());
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:11:49 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/18 10:39:35 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/19 15:34:04 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ void	test_ft_read(t_args *args);
 void	test_ft_atoi_base(t_args *args);
 void	test_ft_list_size(t_args *args);
 void	test_ft_list_push_front(t_args *args);
+void	test_ft_list_sort(t_args *args);
 
 #endif

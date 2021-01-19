@@ -31,7 +31,9 @@ SRCS		=	srcs/main.c		\
 				srcs/ft_list_push_front_libft.c	\
 				srcs/ft_lstclear.c				\
 				srcs/test_ft_atoi_base.c	\
-				srcs/test_ft_list_size.c
+				srcs/test_ft_list_size.c	\
+				srcs/test_ft_list_push_front.c	\
+				srcs/test_ft_list_sort.c
 OBJS		=	$(SRCS:.c=.o)
 
 CC			=	clang

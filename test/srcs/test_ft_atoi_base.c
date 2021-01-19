@@ -100,7 +100,7 @@ void	test_ft_atoi_base(t_args *args)
 	if (args->verbose)
 		printf(BOLD "ft_atoi_base:\n" RESET);
 	else
-		printf(BOLD "ft_atoi_base:" RESET);
+		printf(BOLD "ft_atoi_base:\t" RESET);
 	ko = FALSE;
 	test_ft_atoi_base_basic_cases(&ko, args);
 	test_ft_atoi_base_complex_cases(&ko, args);
@@ -119,7 +119,7 @@ void	test_ft_atoi_base(t_args *args)
 	if (done)
 		return ;
 	if (!args->verbose)
-		printf(BOLD "ft_atoi_base:" RESET YELLOW "\tInactive\n" RESET);
+		printf(BOLD "ft_atoi_base:\t" RESET YELLOW "\tInactive\n" RESET);
 	else
 		printf(BOLD "ft_atoi_base:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;

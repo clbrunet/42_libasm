@@ -62,7 +62,7 @@ void	test_ft_list_size(t_args *args)
 	if (args->verbose)
 		printf(BOLD "ft_list_size:\n" RESET);
 	else
-		printf(BOLD "ft_list_size:" RESET);
+		printf(BOLD "ft_list_size:\t" RESET);
 	ko = FALSE;
 	test_ft_list_size_cases(&ko, args);
 	if (!args->verbose)
@@ -79,7 +79,7 @@ void	test_ft_list_size(t_args *args)
 	if (done)
 		return ;
 	if (!args->verbose)
-		printf(BOLD "ft_list_size:" RESET YELLOW "\tInactive\n" RESET);
+		printf(BOLD "ft_list_size:\t" RESET YELLOW "\tInactive\n" RESET);
 	else
 		printf(BOLD "ft_list_size:\n" RESET YELLOW "\tInactive\n" RESET);
 	done = TRUE;

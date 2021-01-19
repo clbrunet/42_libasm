@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:06:59 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/16 15:24:48 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/19 14:54:19 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ static void	mandatory_part_tests(t_args *args)
 static void	bonus_part_tests(t_args *args)
 {
 	test_ft_atoi_base(args);
-	/* if (FT_LIST_PUSH_FRONT) */
-	/* test_ft_list_push_front(args); */
+	test_ft_list_push_front(args);
 	test_ft_list_size(args);
+	test_ft_list_sort(args);
 }
 
 static void	tests(t_args *args)
@@ -92,8 +92,12 @@ static void	tests(t_args *args)
 		test_ft_strdup(args);
 	if (args->atoi_base)
 		test_ft_atoi_base(args);
+	if (args->list_push_front)
+		test_ft_list_push_front(args);
 	if (args->list_size)
 		test_ft_list_size(args);
+	if (args->list_sort)
+		test_ft_list_sort(args);
 	if (args->bonus)
 		bonus_part_tests(args);
 	if (args->all)
