@@ -38,7 +38,7 @@ static void	test_ft_list_size_cases(char *ko, t_args *args)
 	begin_list = NULL;
 	*ko = test_ft_list_size_case("empty_list:\t", begin_list, args);
 	ft_list_push_front_libft(&begin_list, NULL);
-	if (test_ft_list_size_case("1_link_list:\t", begin_list, args))
+	if (test_ft_list_size_case("1_elem_list:\t", begin_list, args))
 		*ko = TRUE;
 	i = 0;
 	while (i++ < 10)

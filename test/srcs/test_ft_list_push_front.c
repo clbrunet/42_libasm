@@ -48,7 +48,7 @@ static void	test_ft_list_push_front_cases(char *ko, t_args *args)
 	if (test_ft_list_push_front_case("empty_list:\t", begin_list, strdup("a"), args))
 		*ko = TRUE;
 	begin_list = ft_lstnew(strdup("a"));
-	if (test_ft_list_push_front_case("1_link_list:\t", begin_list, strdup("b"), args))
+	if (test_ft_list_push_front_case("1_elem_list:\t", begin_list, strdup("b"), args))
 		*ko = TRUE;
 	begin_list = NULL;
 	i = 0;

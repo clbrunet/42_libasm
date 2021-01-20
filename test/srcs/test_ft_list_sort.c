@@ -62,7 +62,7 @@ static void	test_ft_list_sort_cases(char *ko, t_args *args)
 	if (test_ft_list_sort_case("empty_list:\t", begin_list, args))
 		*ko = TRUE;
 	begin_list = ft_lstnew(strdup("test"));
-	if (test_ft_list_sort_case("1_link_list:\t", begin_list, args))
+	if (test_ft_list_sort_case("1_elem_list:\t", begin_list, args))
 		*ko = TRUE;
 	begin_list = NULL;
 	str[1] = 0;
