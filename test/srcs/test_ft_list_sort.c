@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 06:36:03 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/19 15:22:57 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/19 19:04:53 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ static char	check_list_sort(t_list *begin_list)
 
 static char	test_ft_list_sort_case(char const *test_name, t_list *begin_list, t_args *args)
 {
-	t_list	*begin_list_backup;
 	char	ko;
 
 	if (args->verbose > 1)
 		printf("\tft_list_sort(begin_list, &strcmp):");
 	else if (args->verbose)
 		printf("\t%s", test_name);
-	begin_list_backup = begin_list;
 	ko = FALSE;
 	ft_list_sort(&begin_list, &strcmp);
 	if (!begin_list)
@@ -63,23 +61,23 @@ void	test_ft_list_sort_cases(char *ko, t_args *args)
 	i = 0;
 	while (i < 10)
 	{
-		str[0] = i++ + '0';
+		str[0] = '9' - i++;
 		ft_list_push_front_libft(&begin_list, strdup(str));
 	}
 	if (test_ft_list_sort_case("sorted_list:\t", begin_list, args))
 		*ko = TRUE;
 	begin_list = NULL;
 	str[1] = 0;
-	i = 9;
-	while (i > 5)
+	i = 0;
+	while (i > 10)
 	{
-		str[0] = i-- + '0';
+		str[0] = i++ + '0';
 		ft_list_push_front_libft(&begin_list, strdup(str));
 	}
+	str[0] = '2';
+	ft_list_push_front_libft(&begin_list, strdup(str));
+	ft_list_push_front_libft(&begin_list, strdup(str));
 	str[0] = '0';
-	ft_list_push_front_libft(&begin_list, strdup(str));
-	str[0] = '1';
-	ft_list_push_front_libft(&begin_list, strdup(str));
 	ft_list_push_front_libft(&begin_list, strdup(str));
 	if (test_ft_list_sort_case("unsorted_list:\t", begin_list, args))
 		*ko = TRUE;

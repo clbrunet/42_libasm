@@ -105,6 +105,10 @@ check_base:			enter	0, 0
 
 ; int	ft_atoi_base(rdi: char *str, rsi: char *base);
 ft_atoi_base:		enter	40, 0
+					cmp		rdi, 0
+					jz		.error_ret
+					cmp		rsi, 0
+					jz		.error_ret
 					xor		rax, rax
 					mov		[rbp - 8], rax
 					mov		[rbp - 16], rdi
@@ -170,5 +174,9 @@ ft_atoi_base:		enter	40, 0
 					ret
 
 .neg_result:		neg		rax
+					leave
+					ret
+
+.error_ret:			mov		rax, 0
 					leave
 					ret

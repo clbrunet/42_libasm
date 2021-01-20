@@ -30,8 +30,8 @@ SRCS		=	srcs/main.c		\
 				srcs/ft_list_size_libft.c		\
 				srcs/ft_list_push_front_libft.c	\
 				srcs/ft_lstclear.c				\
-				srcs/test_ft_atoi_base.c	\
-				srcs/test_ft_list_size.c	\
+				srcs/test_ft_atoi_base.c		\
+				srcs/test_ft_list_size.c		\
 				srcs/test_ft_list_push_front.c	\
 				srcs/test_ft_list_sort.c
 OBJS		=	$(SRCS:.c=.o)
@@ -55,11 +55,22 @@ $(NAME)		:	$(LIBASM_RULE) $(OBJS)
 				$(CC) -g3 -o $(NAME) $(OBJS) $(LIBASM)
 
 clean		:
+				make -C ../ clean
 				rm -f $(OBJS)
 
-fclean		:	clean
+test_clean	:
+				rm -f $(OBJS)
+
+fclean		:	test_clean
+				rm -f $(NAME)
+				make -C ../ fclean
+
+test_fclean	:	test_clean
 				rm -f $(NAME)
 
-re			:	fclean $(NAME)
+libasm_re	:
+				make -C ../ re
+
+re			:	test_fclean libasm_re $(NAME)
 
 .PHONY		:	all clean fclean re
