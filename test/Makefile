@@ -1,5 +1,20 @@
 NAME		=	libasm_test
+
 LIBASM		=	../libasm.a
+LIBASM_SRCS	:=	$(shell if test -f "../srcs/ft_strlen.s"; then echo "../srcs/ft_strlen.s"; fi)	\
+				$(shell if test -f "../srcs/ft_strcpy.s"; then echo "../srcs/ft_strcpy.s"; fi)	\
+				$(shell if test -f "../srcs/ft_strcmp.s"; then echo "../srcs/ft_strcmp.s"; fi)	\
+				$(shell if test -f "../srcs/ft_write.s"; then echo "../srcs/ft_write.s"; fi)	\
+				$(shell if test -f "../srcs/ft_read.s"; then echo "../srcs/ft_read.s"; fi)		\
+				$(shell if test -f "../srcs/ft_strdup.s"; then echo "../srcs/ft_strdup.s"; fi)
+LIBASM_OBJS	=	$(LIBASM_SRCS:.s=.o)
+
+LIBASMB_SRCS:=	$(shell if test -f "../srcs/ft_atoi_base_bonus.s"; then echo "../srcs/ft_atoi_base_bonus.s"; fi)				\
+				$(shell if test -f "../srcs/ft_list_push_front_bonus.s"; then echo "../srcs/ft_list_push_front_bonus.s"; fi)	\
+				$(shell if test -f "../srcs/ft_list_size_bonus.s"; then echo "../srcs/ft_list_size_bonus.s"; fi)				\
+				$(shell if test -f "../srcs/ft_list_sort_bonus.s"; then echo "../srcs/ft_list_sort_bonus.s"; fi)				\
+				$(shell if test -f "../srcs/ft_list_remove_if_bonus.s"; then echo "../srcs/ft_list_remove_if_bonus.s"; fi)
+LIBASMB_OBJS=	$(LIBASMB_SRCS:.s=.o)
 
 LIBASM_RULE	:=	$(shell if ls ../srcs/*_bonus.s 1> /dev/null 2>&1; then echo "libasm_bonus"; else echo "libasm"; fi)
 
@@ -33,7 +48,8 @@ SRCS		=	srcs/main.c		\
 				srcs/test_ft_atoi_base.c		\
 				srcs/test_ft_list_size.c		\
 				srcs/test_ft_list_push_front.c	\
-				srcs/test_ft_list_sort.c
+				srcs/test_ft_list_sort.c		\
+				srcs/test_ft_list_remove_if.c
 OBJS		=	$(SRCS:.c=.o)
 
 CC			=	clang
@@ -51,7 +67,8 @@ libasm		:
 libasm_bonus:
 				make -C ../ bonus
 
-$(NAME)		:	$(LIBASM_RULE) $(OBJS)
+$(NAME)		:	$(LIBASM_SRCS) $(LIBASMB_SRCS) $(OBJS)
+				@$(MAKE) $(LIBASM_RULE)
 				$(CC) -g3 -o $(NAME) $(OBJS) $(LIBASM)
 
 clean		:
@@ -73,4 +90,4 @@ libasm_re	:
 
 re			:	test_fclean libasm_re $(NAME)
 
-.PHONY		:	all clean fclean re
+.PHONY		:	all libasm libasm_bonus .s.o clean test_clean fclean test_fclean libasm_re re

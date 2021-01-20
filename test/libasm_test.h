@@ -125,5 +125,6 @@ void	test_ft_atoi_base(t_args *args);
 void	test_ft_list_size(t_args *args);
 void	test_ft_list_push_front(t_args *args);
 void	test_ft_list_sort(t_args *args);
+void	test_ft_list_remove_if(t_args *args);
 
 #endif

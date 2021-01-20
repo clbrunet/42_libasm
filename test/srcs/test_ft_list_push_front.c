@@ -39,13 +39,14 @@ static char	test_ft_list_push_front_case(char const *test_name, t_list *begin_li
 	return (ko);
 }
 
-void	test_ft_list_push_front_cases(char *ko, t_args *args)
+static void	test_ft_list_push_front_cases(char *ko, t_args *args)
 {
 	t_list		*begin_list;
 	unsigned	i;
 
 	begin_list = NULL;
-	*ko = test_ft_list_push_front_case("empty_list:\t", begin_list, strdup("a"), args);
+	if (test_ft_list_push_front_case("empty_list:\t", begin_list, strdup("a"), args))
+		*ko = TRUE;
 	begin_list = ft_lstnew(strdup("a"));
 	if (test_ft_list_push_front_case("1_link_list:\t", begin_list, strdup("b"), args))
 		*ko = TRUE;

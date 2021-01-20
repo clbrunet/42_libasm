@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 06:36:03 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/19 07:24:10 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/20 07:31:46 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	test_ft_list_size_case(char const *test_name, t_list *begin_list, t_
 	return (ko);
 }
 
-void	test_ft_list_size_cases(char *ko, t_args *args)
+static void	test_ft_list_size_cases(char *ko, t_args *args)
 {
 	t_list		*begin_list;
 	unsigned	i;

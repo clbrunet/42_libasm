@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:06:59 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/19 14:54:19 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/20 07:03:54 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	bonus_part_tests(t_args *args)
 	test_ft_list_push_front(args);
 	test_ft_list_size(args);
 	test_ft_list_sort(args);
+	test_ft_list_remove_if(args);
 }
 
 static void	tests(t_args *args)
@@ -98,6 +99,8 @@ static void	tests(t_args *args)
 		test_ft_list_size(args);
 	if (args->list_sort)
 		test_ft_list_sort(args);
+	if (args->list_remove_if)
+		test_ft_list_remove_if(args);
 	if (args->bonus)
 		bonus_part_tests(args);
 	if (args->all)

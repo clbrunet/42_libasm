@@ -6,7 +6,7 @@
 /*   By: clbrunet <clbrunet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 06:36:03 by clbrunet          #+#    #+#             */
-/*   Updated: 2021/01/19 19:04:53 by clbrunet         ###   ########.fr       */
+/*   Updated: 2021/01/20 07:08:10 by clbrunet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,17 @@ static char	check_list_sort(t_list *begin_list)
 
 static char	test_ft_list_sort_case(char const *test_name, t_list *begin_list, t_args *args)
 {
+	t_list	*begin_list_backup;
 	char	ko;
 
 	if (args->verbose > 1)
 		printf("\tft_list_sort(begin_list, &strcmp):");
 	else if (args->verbose)
 		printf("\t%s", test_name);
+	begin_list_backup = begin_list;
 	ko = FALSE;
 	ft_list_sort(&begin_list, &strcmp);
-	if (!begin_list)
+	if (begin_list_backup && !begin_list)
 		ko = TRUE;
 	else if (check_list_sort(begin_list))
 		ko = TRUE;
@@ -50,12 +52,18 @@ static char	test_ft_list_sort_case(char const *test_name, t_list *begin_list, t_
 	return (ko);
 }
 
-void	test_ft_list_sort_cases(char *ko, t_args *args)
+static void	test_ft_list_sort_cases(char *ko, t_args *args)
 {
 	t_list		*begin_list;
 	char		str[2];
 	unsigned	i;
 
+	begin_list = NULL;
+	if (test_ft_list_sort_case("empty_list:\t", begin_list, args))
+		*ko = TRUE;
+	begin_list = ft_lstnew(strdup("test"));
+	if (test_ft_list_sort_case("1_link_list:\t", begin_list, args))
+		*ko = TRUE;
 	begin_list = NULL;
 	str[1] = 0;
 	i = 0;
