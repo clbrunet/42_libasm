@@ -8,6 +8,8 @@ BITS 64
 					global	ft_list_push_front
 
 ft_list_push_front:	enter	0, 0
+					cmp		rdi, 0
+					jz		.ret
 					push	rdi
 					mov		rdi, rsi
 					call	ft_create_elem
@@ -15,5 +17,6 @@ ft_list_push_front:	enter	0, 0
 					mov		r10, [rdi]
 					mov		[rax + 8], r10
 					mov		[rdi], rax
-					leave
+
+.ret:				leave
 					ret

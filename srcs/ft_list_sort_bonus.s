@@ -8,6 +8,10 @@ BITS 64
 					global	ft_list_sort
 
 ft_list_sort:		enter	16, 0
+					cmp		rdi, 0
+					jz		.ret
+					cmp		rsi, 0
+					jz		.ret
 					mov		[rbp - 8], rdi
 					mov		[rbp - 16], rsi
 					mov		rdi, [rdi]
@@ -27,12 +31,11 @@ ft_list_sort:		enter	16, 0
 
 .swap_loop:			cmp		rcx, rax
 					jge		.sorting_loop_end
-					mov		rdx, [rbp - 16]
 					push	rcx
 					push	rax
 					mov		rdi, [r8]
 					mov		rsi, [r9]
-					call	rdx
+					call	[rbp - 16]
 					pop		rax
 					pop		rcx
 					jle		.swap_loop_end

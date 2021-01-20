@@ -13,7 +13,8 @@ BONUS_SRCS=	$(SRCS)	\
 			srcs/ft_list_size_bonus.s		\
 			srcs/ft_create_elem_bonus.s		\
 			srcs/ft_list_push_front_bonus.s	\
-			srcs/ft_list_sort_bonus.s
+			srcs/ft_list_sort_bonus.s		\
+			srcs/ft_list_remove_if_bonus.s
 BONUS_OBJS=	$(BONUS_SRCS:.s=.o)
 
 ASMC	=	nasm
