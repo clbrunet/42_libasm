@@ -8,11 +8,12 @@ SRCS	=	srcs/ft_strlen.s	\
 			srcs/ft_strdup.s
 OBJS	=	$(SRCS:.s=.o)
 
-BONUS_SRCS=	$(SRCS)						\
-			srcs/ft_atoi_base_bonus.s	\
-			srcs/ft_list_size_bonus.s	\
-			srcs/ft_create_elem_bonus.s	\
-			srcs/ft_list_push_front_bonus.s
+BONUS_SRCS=	$(SRCS)	\
+			srcs/ft_atoi_base_bonus.s		\
+			srcs/ft_list_size_bonus.s		\
+			srcs/ft_create_elem_bonus.s		\
+			srcs/ft_list_push_front_bonus.s	\
+			srcs/ft_list_sort_bonus.s
 BONUS_OBJS=	$(BONUS_SRCS:.s=.o)
 
 ASMC	=	nasm
